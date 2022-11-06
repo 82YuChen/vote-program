@@ -11,6 +11,7 @@
         <td>Party</td>
         <td>Age</td>
         <td>Action</td>
+        <td>移除候選人</td>
     </tr>
 
     <% @candidates.each do |candidate| %>
@@ -20,6 +21,9 @@
         <td><%= candidate.age %></td>
         <td>
             <%= link_to 'update', edit_candidate_path(candidate.id) %>
+        </td>
+        <td>
+            <%= link_to 'delete', candidate_path(candidate.id), method: 'delete', data: {confirm: '確認刪除候選人？'} %>
         </td>
     </tr>
     <% end %>
