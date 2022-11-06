@@ -7,6 +7,8 @@
 
 <table>
     <tr>
+        <td>投票</td>
+        <td>票數</td>
         <td>Name</td>
         <td>Party</td>
         <td>Age</td>
@@ -15,7 +17,10 @@
     </tr>
 
     <% @candidates.each do |candidate| %>
+
     <tr>
+        <td><%= link_to 'vote', vote_candidate_path(candidate.id), method: 'post' %></td>
+        <td><%= candidate.votes %></td>
         <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
         <td><%= candidate.party %></td>
         <td><%= candidate.age %></td>
@@ -26,5 +31,6 @@
             <%= link_to 'delete', candidate_path(candidate.id), method: 'delete', data: {confirm: '確認刪除候選人？'} %>
         </td>
     </tr>
+
     <% end %>
 </table>
